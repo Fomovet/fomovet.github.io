@@ -11,6 +11,10 @@
   line-height: 1.6;
   scrollbar-width: thin;
   scrollbar-color: #eeeeee transparent;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  padding: 12px;
+  box-sizing: border-box;
 }
 .toc::-webkit-scrollbar {
   width: 3px;
@@ -66,6 +70,7 @@
   }
 }
 html.dark .toc {
+  border-color: #30363d;
   scrollbar-color: #30363d transparent;
 }
 html.dark .toc::-webkit-scrollbar-thumb {
@@ -103,7 +108,7 @@ blog.addLoadEvent(function () {
 
   var titleEl = document.createElement('p')
   titleEl.className = 'toc-title'
-  titleEl.textContent = '目录'
+  titleEl.textContent = '文章目录'
   tocEl.appendChild(titleEl)
 
   // 扁平标题列表 -> 嵌套树
