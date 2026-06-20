@@ -22,8 +22,14 @@
     {% include ext-adsense.html -%}
   </div>
   {% endif %}
+  {%- if site.extComment %}
+  {% include ext-comment.html %}
+  {%- endif %}
 </div>
 {% include footer.html -%}
 {% include script.html -%}
+{%- if site.extToc %}
+{% include ext-toc.html %}
+{%- endif %}
 </body>
 </html>

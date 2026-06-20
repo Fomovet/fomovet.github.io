@@ -1,0 +1,75 @@
+<style>
+.comment-section {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 3px solid #eeeeee;
+}
+.comment-title {
+  font-size: 12px;
+  color: #999999;
+  margin: 0 0 16px 0;
+  padding: 0;
+  letter-spacing: 0.05em;
+}
+html.dark .comment-section {
+  border-top-color: #30363d;
+}
+html.dark .comment-title {
+  color: #484f58;
+}
+</style>
+
+<div class="comment-section">
+  <p class="comment-title">评论</p>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="YOUR_USERNAME/YOUR_REPO"
+    data-repo-id="YOUR_REPO_ID"
+    data-category="Announcements"
+    data-category-id="YOUR_CATEGORY_ID"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+<script>
+;(function () {
+  function syncGiscusTheme() {
+    var isDark = document.documentElement.className.indexOf('dark') > -1
+    var iframe = document.querySelector('iframe.giscus-frame')
+    if (!iframe) return
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
+      'https://giscus.app'
+    )
+  }
+
+  // Giscus iframe 就绪后立即同步当前主题
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://giscus.app') return
+    if (e.data && e.data.giscus && e.data.giscus.resizeHeight) {
+      syncGiscusTheme()
+    }
+  })
+
+  // 监听 html class 变化，用户手动切换暗黑时同步通知 Giscus
+  if (window.MutationObserver) {
+    new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].attributeName === 'class') {
+          syncGiscusTheme()
+          break
+        }
+      }
+    }).observe(document.documentElement, { attributes: true })
+  }
+})()
+</script>

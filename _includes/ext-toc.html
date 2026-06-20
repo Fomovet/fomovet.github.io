@@ -1,0 +1,221 @@
+<style>
+.toc {
+  position: fixed;
+  top: 80px;
+  left: calc(50% - 560px);
+  width: 200px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 13px;
+  line-height: 1.6;
+  scrollbar-width: thin;
+  scrollbar-color: #eeeeee transparent;
+}
+.toc::-webkit-scrollbar {
+  width: 3px;
+}
+.toc::-webkit-scrollbar-thumb {
+  background: #eeeeee;
+  border-radius: 2px;
+}
+.toc-title {
+  font-size: 12px;
+  color: #999999;
+  margin: 0 0 8px 0;
+  padding: 0;
+  letter-spacing: 0.05em;
+}
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.toc-list .toc-list {
+  padding-left: 10px;
+}
+.toc-item {
+  margin: 0;
+  padding: 0;
+}
+.toc-link {
+  display: block;
+  padding: 2px 0 2px 8px;
+  color: #999999;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+.toc-link:hover {
+  color: #333333;
+}
+.toc-link.is-active {
+  color: #333333;
+  border-left-color: #333333;
+}
+.toc-h3 .toc-link,
+.toc-h4 .toc-link {
+  font-size: 12px;
+}
+@media (max-width: 1119px) {
+  .toc {
+    display: none !important;
+  }
+}
+html.dark .toc {
+  scrollbar-color: #30363d transparent;
+}
+html.dark .toc::-webkit-scrollbar-thumb {
+  background: #30363d;
+}
+html.dark .toc-title {
+  color: #484f58;
+}
+html.dark .toc-link {
+  color: #8b949e;
+}
+html.dark .toc-link:hover {
+  color: #c9d1d9;
+}
+html.dark .toc-link.is-active {
+  color: #c9d1d9;
+  border-left-color: #58a6ff;
+}
+</style>
+
+<script>
+blog.addLoadEvent(function () {
+  if (!document.querySelector('.page-post')) return
+
+  var postEl = document.querySelector('.page-post .post')
+  if (!postEl) return
+
+  var headings = postEl.querySelectorAll('h2, h3, h4')
+  if (headings.length < 3) return
+
+  // 创建 TOC 容器并挂到 body（fixed 定位，和文档流无关）
+  var tocEl = document.createElement('nav')
+  tocEl.className = 'toc'
+  document.body.appendChild(tocEl)
+
+  var titleEl = document.createElement('p')
+  titleEl.className = 'toc-title'
+  titleEl.textContent = '目录'
+  tocEl.appendChild(titleEl)
+
+  // 扁平标题列表 -> 嵌套树
+  function buildTree(list) {
+    var root = { level: 1, children: [] }
+    var stack = [root]
+    for (var i = 0; i < list.length; i++) {
+      var level = parseInt(list[i].tagName.charAt(1), 10)
+      var node = { el: list[i], level: level, children: [] }
+      while (stack.length > 1 && stack[stack.length - 1].level >= level) {
+        stack.pop()
+      }
+      stack[stack.length - 1].children.push(node)
+      stack.push(node)
+    }
+    return root.children
+  }
+
+  // 平行数组，记录 heading -> link 的对应关系
+  var headingArr = []
+  var linkArr = []
+
+  function renderTree(nodes, ul) {
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i]
+      var li = document.createElement('li')
+      li.className = 'toc-item toc-h' + node.level
+
+      var a = document.createElement('a')
+      a.className = 'toc-link'
+      a.href = '#' + (node.el.id || '')
+      a.title = node.el.textContent
+      a.textContent = node.el.textContent
+
+      ;(function (targetEl) {
+        blog.addEvent(a, 'click', function (e) {
+          e.preventDefault()
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          if (targetEl.id && history.replaceState) {
+            history.replaceState({}, '', '#' + targetEl.id)
+          }
+        })
+      })(node.el)
+
+      headingArr.push(node.el)
+      linkArr.push(a)
+
+      li.appendChild(a)
+
+      if (node.children.length > 0) {
+        var subUl = document.createElement('ul')
+        subUl.className = 'toc-list'
+        renderTree(node.children, subUl)
+        li.appendChild(subUl)
+      }
+      ul.appendChild(li)
+    }
+  }
+
+  var rootUl = document.createElement('ul')
+  rootUl.className = 'toc-list'
+  renderTree(buildTree(headings), rootUl)
+  tocEl.appendChild(rootUl)
+
+  // 视口不足时不挂监听（CSS 已隐藏，省资源）
+  if (window.innerWidth < 1120) return
+
+  var activeLink = null
+
+  function setActive(link) {
+    if (activeLink === link) return
+    if (activeLink) blog.removeClass(activeLink, 'is-active')
+    activeLink = link
+    if (activeLink) {
+      blog.addClass(activeLink, 'is-active')
+      activeLink.scrollIntoView({ block: 'nearest' })
+    }
+  }
+
+  // 找最后一个已滚过顶部的标题
+  function findActive() {
+    var current = -1
+    for (var i = 0; i < headingArr.length; i++) {
+      if (headingArr[i].getBoundingClientRect().top <= 64) {
+        current = i
+      } else {
+        break
+      }
+    }
+    setActive(linkArr[current > -1 ? current : 0])
+  }
+
+  // IntersectionObserver 处理进入视口的标题
+  if (window.IntersectionObserver) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            var idx = headingArr.indexOf(entries[i].target)
+            if (idx > -1) setActive(linkArr[idx])
+          }
+        }
+      },
+      { rootMargin: '-60px 0px -75% 0px', threshold: 0 }
+    )
+    for (var i = 0; i < headingArr.length; i++) {
+      observer.observe(headingArr[i])
+    }
+  }
+
+  // scroll 兜底：处理已滚过去的标题 + 不支持 Observer 的降级
+  blog.addEvent(window, 'scroll', findActive)
+  findActive()
+})
+</script>

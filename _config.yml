@@ -56,6 +56,12 @@ extMath: false
 # 显示访问量统计，由不蒜子提供服务
 extCount: false
 
+# 文章大纲 TOC
+extToc: true
+
+# 评论（Giscus），配置见 _includes/ext-comment.html
+extComment: false
+
 # 友情链接
 links:
   - title: 文科中的技术宅
