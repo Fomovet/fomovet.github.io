@@ -1,16 +1,19 @@
 ---
 layout: mypost
-title: 关于我
+title: 关于
 ---
 
-> Hello 陌生人，欢迎访问 Fomovet Blog
+## CTF Writeups
 
-该博客托管于 GitHub Pages，主要记录 CTF 比赛题解、安全研究笔记和个人学习总结。
+本站收录了我参加 CTF 比赛的题解记录。
 
-## 关于博客
+参考来源：[washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups)
 
-- 主题基于 [tmaize-blog](https://github.com/TMaize/tmaize-blog) 修改，支持深色模式、TOC 大纲、代码高亮
-- CTF writeup 参考来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups)
+## 免责声明
+
+这些题解中的解题思路仅代表其中一种解法，并非最优路径。
+
+此外，这里讨论的任何想法均为个人观点，不代表任何雇主或同事的立场。
 
 ## 联系我
 
