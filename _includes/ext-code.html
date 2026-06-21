@@ -102,7 +102,6 @@ blog.addLoadEvent(function () {
       var codeEl = block.querySelector('code')
       if (!codeEl) return
 
-      // Shiki 的 code 元素无 class，从外层父 div 读语言名
       var lang = ''
       var parentClass = (block.parentElement && block.parentElement.className) || ''
       var match = parentClass.match(/language-(\w+)/)

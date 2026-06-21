@@ -30,16 +30,6 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Shiki
-        run: npm install
-
-      - name: Highlight code with Shiki
-        run: node scripts/shiki-highlight.mjs
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

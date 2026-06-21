@@ -1,4 +1,58 @@
-/* Shiki github-light theme — syntax colors are inline styles on spans */
-.highlight {
-  background-color: #ffffff;
+.highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight { background-color: #f6f8fa; }
+
+/* comments */
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm,
+.highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #6e7781; font-style: italic;
 }
+.highlight .cp { color: #6e7781; font-weight: bold; }
+/* error */
+.highlight .err { color: #cf222e; background-color: #ffebe9; }
+/* diff */
+.highlight .gd { color: #82071e; background-color: #ffebe9; }
+.highlight .gi { color: #116329; background-color: #dafbe1; }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: bold; }
+.highlight .gh, .highlight .gu { color: #6e7781; }
+.highlight .go { color: #6e7781; }
+.highlight .gp { color: #6e7781; }
+.highlight .gt { color: #cf222e; }
+/* keywords */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp,
+.highlight .kr, .highlight .kc, .highlight .kv {
+  color: #cf222e;
+}
+.highlight .kt { color: #953800; font-weight: bold; }
+/* numbers */
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh,
+.highlight .mi, .highlight .mo, .highlight .mx, .highlight .il {
+  color: #0550ae;
+}
+/* strings */
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
+.highlight .sd, .highlight .s2, .highlight .se, .highlight .sh,
+.highlight .si, .highlight .sx, .highlight .s1, .highlight .dl {
+  color: #0a3069;
+}
+.highlight .sr { color: #116329; }
+.highlight .ss { color: #8250df; }
+/* names */
+.highlight .na { color: #116329; }
+.highlight .nb { color: #953800; }
+.highlight .nc { color: #953800; font-weight: bold; }
+.highlight .nd { color: #8250df; }
+.highlight .ni { color: #24292f; }
+.highlight .ne { color: #cf222e; font-weight: bold; }
+.highlight .nf, .highlight .fm { color: #8250df; }
+.highlight .nl { color: #24292f; }
+.highlight .nn { color: #24292f; }
+.highlight .nt { color: #116329; }
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi,
+.highlight .vm, .highlight .bp { color: #953800; }
+.highlight .no { color: #0550ae; }
+/* operators */
+.highlight .o, .highlight .ow { color: #cf222e; }
+/* whitespace */
+.highlight .w { color: #6e7781; }

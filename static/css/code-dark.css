@@ -1,9 +1,52 @@
-/* Shiki github-dark theme — activate via html.dark class */
-html.dark .highlight pre.shiki {
-  background-color: var(--shiki-dark-bg) !important;
+html.dark .highlight,
+html.dark pre.highlight {
+  background: #161b22;
+  color: #c9d1d9;
 }
-html.dark .highlight pre.shiki span {
-  color: var(--shiki-dark, inherit) !important;
-  font-style: var(--shiki-dark-font-style, inherit) !important;
-  font-weight: var(--shiki-dark-font-weight, inherit) !important;
+html.dark .highlight .c, html.dark .highlight .ch, html.dark .highlight .cd,
+html.dark .highlight .cm, html.dark .highlight .cpf, html.dark .highlight .c1,
+html.dark .highlight .cs {
+  color: #8b949e; font-style: italic;
 }
+html.dark .highlight .cp { color: #8b949e; }
+html.dark .highlight .err { color: #f85149; background-color: #490202; }
+html.dark .highlight .gd { color: #ffa198; background-color: #490202; }
+html.dark .highlight .gi { color: #56d364; background-color: #0f5323; }
+html.dark .highlight .ge { font-style: italic; }
+html.dark .highlight .gs { font-weight: bold; }
+html.dark .highlight .gh, html.dark .highlight .gu { color: #8b949e; }
+html.dark .highlight .gt { color: #f85149; }
+html.dark .highlight .k, html.dark .highlight .kd, html.dark .highlight .kn,
+html.dark .highlight .kp, html.dark .highlight .kr, html.dark .highlight .kc,
+html.dark .highlight .kv {
+  color: #ff7b72;
+}
+html.dark .highlight .kt { color: #ffa657; font-weight: bold; }
+html.dark .highlight .m, html.dark .highlight .mb, html.dark .highlight .mf,
+html.dark .highlight .mh, html.dark .highlight .mi, html.dark .highlight .mo,
+html.dark .highlight .mx, html.dark .highlight .il {
+  color: #79c0ff;
+}
+html.dark .highlight .s, html.dark .highlight .sa, html.dark .highlight .sb,
+html.dark .highlight .sc, html.dark .highlight .sd, html.dark .highlight .s2,
+html.dark .highlight .se, html.dark .highlight .sh, html.dark .highlight .si,
+html.dark .highlight .sx, html.dark .highlight .s1, html.dark .highlight .dl {
+  color: #a5d6ff;
+}
+html.dark .highlight .sr { color: #7ee787; }
+html.dark .highlight .ss { color: #d2a8ff; }
+html.dark .highlight .na { color: #7ee787; }
+html.dark .highlight .nb { color: #ffa657; }
+html.dark .highlight .nc { color: #ffa657; font-weight: bold; }
+html.dark .highlight .nd { color: #d2a8ff; }
+html.dark .highlight .ne { color: #ff7b72; font-weight: bold; }
+html.dark .highlight .nf, html.dark .highlight .fm { color: #d2a8ff; }
+html.dark .highlight .nl, html.dark .highlight .nn { color: #c9d1d9; }
+html.dark .highlight .nt { color: #7ee787; }
+html.dark .highlight .nv, html.dark .highlight .vc, html.dark .highlight .vg,
+html.dark .highlight .vi, html.dark .highlight .vm, html.dark .highlight .bp {
+  color: #ffa657;
+}
+html.dark .highlight .no { color: #79c0ff; }
+html.dark .highlight .o, html.dark .highlight .ow { color: #ff7b72; }
+html.dark .highlight .w { color: #8b949e; }
