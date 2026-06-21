@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 4 - FLARE Meme Maker 3000"
+title: "4 - FLARE Meme Maker 3000"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2024
 
 # 4 - FLARE Meme Maker 3000 
 

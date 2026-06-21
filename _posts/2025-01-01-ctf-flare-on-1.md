@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 1 - Drill Baby Drill!"
+title: "1 - Drill Baby Drill!"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2025
 
 # 1 - Drill Baby Drill!
 

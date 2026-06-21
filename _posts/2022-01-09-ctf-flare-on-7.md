@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 7 - anode"
+title: "7 - anode"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2022
 
 # 7 - anode
 

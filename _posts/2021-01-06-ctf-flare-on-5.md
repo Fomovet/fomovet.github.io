@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 5 - FLARE Linux VM"
+title: "5 - FLARE Linux VM"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2021
 
 # 5 - FLARE Linux VM
 

@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 2 - checksum"
+title: "2 - checksum"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2024
 
 # 2 - checksum
 

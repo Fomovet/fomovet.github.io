@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 1 - Flaredle"
+title: "1 - Flaredle"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2022
 
 # 1 - Flaredle 
 

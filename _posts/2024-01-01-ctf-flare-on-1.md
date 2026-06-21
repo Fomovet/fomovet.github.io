@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 1 - frog"
+title: "1 - frog"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2024
 
 # 1 - frog 
 

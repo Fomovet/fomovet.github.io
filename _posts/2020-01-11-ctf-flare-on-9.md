@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 9 - crackstaller"
+title: "9 - crackstaller"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2020
 
 # 9 - crackstaller
 

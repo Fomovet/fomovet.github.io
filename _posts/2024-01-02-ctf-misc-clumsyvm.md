@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][misc] ClumsyVM"
+title: "ClumsyVM"
 categories: [CTF, Misc]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; misc 2024
 
 # ClumsyVM
 

@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 6 - PetTheKitty"
+title: "6 - PetTheKitty"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2021
 
 # 6 - PetTheKitty
 

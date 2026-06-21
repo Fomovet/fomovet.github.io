@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 6 - BMP Hide"
+title: "6 - BMP Hide"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2019
 
 # 6 - BMP Hide
 

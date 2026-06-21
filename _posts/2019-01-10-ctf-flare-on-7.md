@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 7 - wopr"
+title: "7 - wopr"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2019
 
 # 7 - wopr
 

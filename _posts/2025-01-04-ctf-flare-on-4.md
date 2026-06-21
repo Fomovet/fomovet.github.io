@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][flare-on] 4 - UnholyDragon"
+title: "4 - UnholyDragon"
 categories: [CTF, Flare On]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; flare-on 2025
 
 # 4 - UnholyDragon
 

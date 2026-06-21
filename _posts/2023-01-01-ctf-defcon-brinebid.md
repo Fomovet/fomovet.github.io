@@ -1,10 +1,8 @@
 ---
 layout: mypost
-title: "[CTF][defcon] brinebid"
+title: "brinebid"
 categories: [CTF, Defcon]
 ---
-
-> 来源：[Washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups) &nbsp;·&nbsp; defcon 2023
 
 # brinebid
 
