@@ -1,6 +1,8 @@
 <style>
 .highlight {
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .code-toolbar {
   position: absolute;
@@ -69,7 +71,7 @@ html.dark .copy-btn.copied {
 blog.addLoadEvent(function () {
   if (!document.querySelector('.page-post')) return
 
-  var blocks = document.querySelectorAll('.page-post .highlight')
+  var blocks = document.querySelectorAll('.page-post .highlight:not(pre)')
 
   function showCopied(btn) {
     btn.textContent = '已复制'

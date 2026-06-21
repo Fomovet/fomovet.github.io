@@ -109,7 +109,8 @@ html.dark .toc-link.is-active::before {
 </style>
 
 <script>
-blog.addLoadEvent(function () {
+;(function () {
+function initToc() {
   if (!document.querySelector('.page-post')) return
 
   var postEl = document.querySelector('.page-post .post')
@@ -239,5 +240,11 @@ blog.addLoadEvent(function () {
   // scroll 兜底：处理已滚过去的标题 + 不支持 Observer 的降级
   blog.addEvent(window, 'scroll', findActive)
   findActive()
-})
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initToc)
+} else {
+  initToc()
+}
+})()
 </script>
