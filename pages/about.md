@@ -7,8 +7,6 @@ title: 关于
 
 本站收录了我参加 CTF 比赛的题解记录。
 
-参考来源：[washi1337/ctf-writeups](https://github.com/Washi1337/ctf-writeups)
-
 ## 免责声明
 
 这些题解中的解题思路仅代表其中一种解法，并非最优路径。
