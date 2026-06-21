@@ -30,21 +30,21 @@ function stripTags(html) {
 
 function processHtml(content) {
   let changed = false
+  // Rouge structure: <div class="language-LANG highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code></pre></div></div>
   const result = content.replace(
-    /<code class="language-(\w+)">([\s\S]*?)<\/code>/g,
+    /<div class="language-(\w+) highlighter-rouge">\s*<div class="highlight">\s*<pre class="highlight">\s*<code>([\s\S]*?)<\/code>\s*<\/pre>\s*<\/div>\s*<\/div>/g,
     (match, lang, inner) => {
       if (!LANGS.includes(lang)) return match
       const code = decode(stripTags(inner)).replace(/\n$/, '')
       if (!code.trim()) return match
       try {
-        const html = hl.codeToHtml(code, {
+        const shikiHtml = hl.codeToHtml(code, {
           lang,
           themes: { light: 'github-light', dark: 'github-dark' }
         })
-        const m = html.match(/<code[^>]*>([\s\S]*?)<\/code>/)
-        if (!m) return match
         changed = true
-        return `<code class="language-${lang}">${m[1]}</code>`
+        // 保留外层 .highlight 包装，供 ext-code.html 的复制按钮使用
+        return `<div class="language-${lang} highlighter-rouge"><div class="highlight">${shikiHtml}</div></div>`
       } catch {
         return match
       }

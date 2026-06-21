@@ -1,9 +1,8 @@
-/* Shiki github-dark theme — activate dark mode CSS variables */
-html.dark .highlight,
-html.dark pre.highlight {
-  background-color: #0d1117;
+/* Shiki github-dark theme — activate via html.dark class */
+html.dark .highlight pre.shiki {
+  background-color: var(--shiki-dark-bg) !important;
 }
-html.dark .highlight code span {
+html.dark .highlight pre.shiki span {
   color: var(--shiki-dark, inherit) !important;
   font-style: var(--shiki-dark-font-style, inherit) !important;
   font-weight: var(--shiki-dark-font-weight, inherit) !important;
