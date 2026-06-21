@@ -55,6 +55,9 @@ extCount: false
 # 文章大纲 TOC
 extToc: true
 
+# 代码块：语言标签 + 复制按钮
+extCode: true
+
 # 评论（Giscus），配置见 _includes/ext-comment.html
 extComment: true
 

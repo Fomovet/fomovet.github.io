@@ -1,0 +1,132 @@
+<style>
+.highlight {
+  position: relative;
+}
+.code-toolbar {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+.highlight:hover .code-toolbar {
+  opacity: 1;
+  pointer-events: auto;
+}
+.code-lang {
+  font-size: 11px;
+  color: #999999;
+  user-select: none;
+  line-height: 1;
+}
+.copy-btn {
+  font-size: 11px;
+  color: #666666;
+  background: #e8e8e8;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 8px;
+  cursor: pointer;
+  line-height: 1.5;
+  transition: background 150ms ease, color 150ms ease;
+}
+.copy-btn:hover {
+  background: #333333;
+  color: #ffffff;
+}
+.copy-btn.copied {
+  background: #2ea043;
+  color: #ffffff;
+}
+@media (max-width: 560px) {
+  .code-toolbar {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+html.dark .code-lang {
+  color: #484f58;
+}
+html.dark .copy-btn {
+  background: #30363d;
+  color: #8b949e;
+}
+html.dark .copy-btn:hover {
+  background: #c9d1d9;
+  color: #0d1117;
+}
+html.dark .copy-btn.copied {
+  background: #2ea043;
+  color: #ffffff;
+}
+</style>
+
+<script>
+blog.addLoadEvent(function () {
+  if (!document.querySelector('.page-post')) return
+
+  var blocks = document.querySelectorAll('.page-post .highlight')
+
+  function showCopied(btn) {
+    btn.textContent = '已复制'
+    blog.addClass(btn, 'copied')
+    setTimeout(function () {
+      btn.textContent = '复制'
+      blog.removeClass(btn, 'copied')
+    }, 2000)
+  }
+
+  function copyText(text, btn) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { showCopied(btn) })
+    } else {
+      var ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      try { document.execCommand('copy'); showCopied(btn) } catch (e) {}
+      document.body.removeChild(ta)
+    }
+  }
+
+  for (var i = 0; i < blocks.length; i++) {
+    (function (block) {
+      var codeEl = block.querySelector('code')
+      if (!codeEl) return
+
+      var lang = ''
+      var cls = codeEl.className || ''
+      var match = cls.match(/language-(\w+)/)
+      if (match) lang = match[1]
+
+      var toolbar = document.createElement('div')
+      toolbar.className = 'code-toolbar'
+
+      if (lang) {
+        var langEl = document.createElement('span')
+        langEl.className = 'code-lang'
+        langEl.textContent = lang
+        toolbar.appendChild(langEl)
+      }
+
+      var btn = document.createElement('button')
+      btn.className = 'copy-btn'
+      btn.textContent = '复制'
+      ;(function (b, el) {
+        blog.addEvent(b, 'click', function () {
+          copyText(el.textContent || el.innerText || '', b)
+        })
+      })(btn, codeEl)
+
+      toolbar.appendChild(btn)
+      block.appendChild(toolbar)
+    })(blocks[i])
+  }
+})
+</script>
