@@ -1,92 +1,91 @@
-# 介绍
+# Fomovet Blog
 
-[![Language](https://img.shields.io/badge/Jekyll-Theme-blue)](https://github.com/TMaize/tmaize-blog)
-[![license](https://img.shields.io/github/license/TMaize/tmaize-blog)](https://github.com/TMaize/tmaize-blog)
-[![GitHub stars](https://img.shields.io/github/stars/TMaize/tmaize-blog?style=social)](https://github.com/TMaize/tmaize-blog)
+基于 [TMaize Blog](https://github.com/TMaize/tmaize-blog) 主题二次开发的个人博客，使用 Jekyll 构建，自动部署到 GitHub Pages。
 
-一款 jekyll 主题（[GitHub 地址](https://github.com/TMaize/tmaize-blog)），简洁纯净(主题资源请求<20KB)，未引入任何框架，秒开页面，支持自适应，支持全文检索，支持夜间模式
+## 特性
 
-你可以到[TMaize Blog](https://blog.tmaize.net/)查看主题效果 ，欢迎添加友链
+- **零框架**：未引入任何 CSS/JS 框架，页面资源极小，秒开
+- **自动部署**：push 到 master 分支后，GitHub Actions 自动构建并发布
+- **深色/浅色模式**：手动切换，状态本地持久化
+- **文章大纲（TOC）**：文章页左侧固定显示，滚动自动高亮当前章节，DOMContentLoaded 后立即渲染
+- **代码高亮**：使用 Shiki（VS Code 同款引擎）在构建阶段完成，支持 github-light / github-dark 双主题，浏览器无需加载任何 JS 即可显示颜色
+- **代码复制**：代码块右上角悬停显示语言标签和复制按钮，2 秒后自动重置
+- **评论系统**：集成 Giscus（基于 GitHub Discussions），深色模式自动同步
+- **导航图标**：菜单项内联 SVG 图标，零外部依赖，深色模式自动切换颜色
+- **系统字体**：使用 Segoe UI / -apple-system / system-ui 字体栈，无需加载字体文件
+- **响应式**：适配桌面和移动端
+- **全文搜索**：内置静态搜索，无需后端
+- **图片预览**：点击文章内图片全屏预览
 
-## 感谢
+## 目录结构
 
-[JetBrains](https://www.jetbrains.com/?from=tmaize-blog) 免费提供的开发工具[![JetBrains](./static/img/jetbrains.svg)](https://www.jetbrains.com/?from=tmaize-blog)
-
-[夜间模式代码高亮配色](https://github.com/mgyongyosi/OneDarkJekyll)
-
-# 本地运行
-
-一般提交到 github 过个几十秒就可以看到效果，如果你需要对在本地查看效果需要安装 ruby 环境和依赖
-
-windows 下推荐在 wsl 下装 ruby，直接一句`apt install build-essential ruby ruby-dev` 就行了
-
-```bash
-# gem sources --remove https://rubygems.org/
-# gem sources -a https://mirrors.tuna.tsinghua.edu.cn/rubygems/
-# gem sources -l
-# gem sources --clear-all
-# gem sources --update
-gem install bundler
-# bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
-# bundle config list
-bundle install
+```
+├── _posts/          # 文章（命名格式：yyyy-MM-dd-title.md）
+├── posts/           # 文章资源（图片等，按 yyyy/MM/dd 存放）
+├── pages/           # 独立页面
+├── _includes/       # 可复用模板片段
+├── _layouts/        # 页面布局
+├── static/          # 静态资源（CSS/JS/图片）
+├── scripts/         # 构建脚本（Shiki 代码高亮）
+├── _config.yml      # 站点配置
+└── package.json     # Node.js 依赖（仅 Shiki）
 ```
 
-通过下面命令启动/编译项目
+## 写文章
 
-```bash
-bundle exec jekyll serve --watch --host=127.0.0.1 --port=8080
-bundle exec jekyll build --destination=dist
-```
-
-如果需要替换代码高亮的样式可以通过下面的命令生成 css
-
-```bash
-rougify help style
-rougify style github > highlighting.css
-```
-
-# 项目配置
-
-1. 如果使用自己的域名，`CNAME`文件里的内容请换成你自己的域名，然后 CNAME 解析到`用户名.github.com`
-
-2. 如果使用 GitHub 的的域名，请删除`CNAME`文件，然后把你的项目修改为`用户名.github.io`
-
-3. 修改`pages/about.md`中关于我的内容
-
-4. 修改`_config.yml`文件，具体作用请参考注释
-
-5. 清空`posts`和`_posts`目录下所有文件，注意是清空，不是删除这两个目录
-
-6. 网站的 logo 和 favicon 放在了`static/img/`下，替换即可，大小无所谓，图片比例最好是 1:1
-
-7. 如果你是把项目 fork 过去的，想要删除我的提交记录可以使用下面的命令
-
-   ```
-   git checkout --orphan temp
-   git add . && git commit -m init
-   git branch -D master
-   git branch -m temp master
-   git push --force
-   ```
-
-# 使用
-
-文章放在`_posts`目录下，命名为`yyyy-MM-dd-xxxx-xxxx.md`，内容格式如下
+在 `_posts/` 目录下新建文件，命名格式为 `yyyy-MM-dd-title.md`：
 
 ```yaml
 ---
 layout: mypost
-title: 标题
+title: 文章标题
 categories: [分类1, 分类2]
 ---
-文章内容，Markdown格式
+
+文章内容，Markdown 格式。
+
+代码块需指定语言以获得语法高亮：
+
+```python
+print("hello world")
+```
 ```
 
-文章资源放在`posts`目录，如文章文件名是`2019-05-01-theme-usage.md`，则该篇文章的资源需要放在`posts/2019/05/01`下，在文章使用时直接引用即可。当然了，写作的时候会提示资源不存在忽略即可
+文章内的图片等资源放在 `posts/yyyy/MM/dd/` 目录下，在 Markdown 中直接引用文件名即可。
 
-```md
-![这是图片](xxx.png)
+## 配置说明
 
-[xxx.zip 下载](xxx.zip)
+编辑 `_config.yml`：
+
+| 配置项 | 说明 |
+|---|---|
+| `title` | 站点标题 |
+| `description` | 站点描述 |
+| `author` | 作者名 |
+| `footerText` | 页脚文字 |
+| `domainUrl` | 站点域名 |
+| `extToc` | 是否开启文章大纲（true/false） |
+| `extComment` | 是否开启 Giscus 评论（true/false） |
+| `extCode` | 是否开启代码复制按钮（true/false） |
+| `extMath` | 是否开启数学公式（true/false） |
+
+## Logo 和 Favicon
+
+替换 `static/img/logo.png`（左上角头像）和 `static/img/favicon.png`（浏览器标签图标），建议使用正方形图片。
+
+## 本地预览
+
+需要安装 Ruby 环境：
+
+```bash
+gem install bundler
+bundle install
+bundle exec jekyll serve --watch --host=127.0.0.1 --port=8080
 ```
+
+## 评论配置（Giscus）
+
+1. 开启仓库的 GitHub Discussions 功能
+2. 安装 [Giscus App](https://github.com/apps/giscus)
+3. 在 [giscus.app](https://giscus.app) 生成配置，填入 `_includes/ext-comment.html`
+4. 将 `_config.yml` 中 `extComment` 设为 `true`
